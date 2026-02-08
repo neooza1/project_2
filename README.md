@@ -66,6 +66,4 @@ In Progress
 
 ---
 
-## Author
-Neo Kale  
-Aspiring Frontend / JavaScript Developer
+

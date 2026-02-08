@@ -17,7 +17,9 @@ form.addEventListener("submit" , function(e){
 
         
 
-    }
+    };
+
+});
     applications.push(application);
     renderApplications();
     console.log(applications);
@@ -31,11 +33,26 @@ form.addEventListener("submit" , function(e){
     for( let i = 0; i <applications.length ; i++){
         const app = applications[i];
 
+        const deleteBtn = document.createElement("deleteBtn");
+        deleteBtn.textContent= "Delete";
+        deleteBtn.addEventListener("click", function(){
+        deleteApplication(app.id);
+
+        });
+
         const li = document.createElement("li");
-        li.textContent = ' ${app.studentName} | ${app.studentNumber} | ${app.course} | ${app.status}';
+        li.textContent = app.studentName  + "  " + app.studentNumber + "  " + app.course  + "  " + app.status;
         list.appendChild(li);
+        li.appendChild(deleteBtn);
 
 
+    }
+
+    function deleteApplications(id){
+        applications = applications.filter(app => app.id !== id);
+        renderApplications();
+        
+        
     }
    
    
@@ -49,4 +66,3 @@ form.addEventListener("submit" , function(e){
     
 
 
-})
