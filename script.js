@@ -18,7 +18,12 @@ form.addEventListener("submit" , function(e){
         
 
     };
-
+     
+    const exists = applications.some(app => app.studentNumber == application.studentNumber);
+    if (exists) {
+        alert("Student number already exists.");
+        return;
+    }
     
     applications.push(application);
     renderApplications();
