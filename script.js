@@ -46,6 +46,19 @@ form.addEventListener("submit" , function(e){
         deleteBtn.addEventListener("click", function(){
         deleteApplications(app.id);
         
+        const acceptBtn = document.createElement("button");
+        acceptBtn.textContent(" Accept");
+        acceptBtn.addEventListener("click" , function(){
+        updateStatus(app.id, "accepted");
+
+        });
+
+        const rejectBtn = document.createElement("button");
+        rejectBtn.textContent("Rejeect");
+        rejectBtn.addEventListener("submit", function(){
+            updateStatus(app.id, "Accepted");
+
+        });
 
         });
 
@@ -53,6 +66,8 @@ form.addEventListener("submit" , function(e){
         li.textContent = app.studentName  + "  " + app.studentNumber + "  " + app.course  + "  " + app.status;
         list.appendChild(li);
         li.appendChild(deleteBtn);
+        li.appendChild(acceptBtn);
+        li.appendChild(rejectBtn);
 
 
     }
@@ -64,6 +79,17 @@ form.addEventListener("submit" , function(e){
         renderApplications();
         
         
+    };
+
+    function updateStatus(id, newStatus){
+        for (let i = 0; i < applications.length; i++) {
+            if(applications[i].id == id){
+                applications[i].status = newStatus;
+                break;
+            }
+            
+        }
+
     };
     
 
