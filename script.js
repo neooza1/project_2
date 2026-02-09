@@ -7,7 +7,7 @@ form.addEventListener("submit" , function(e){
     e.preventDefault();
    
 
-    const application={
+    const application ={
         id:Date.now(),
         studentName : document.getElementById("studentName").value,
         studentNumber : document.getElementById("studentNumber").value,
@@ -19,11 +19,14 @@ form.addEventListener("submit" , function(e){
 
     };
 
-});
+    
     applications.push(application);
     renderApplications();
     console.log(applications);
      form.reset();
+
+});
+    
   
     function renderApplications(){
         
@@ -33,10 +36,11 @@ form.addEventListener("submit" , function(e){
     for( let i = 0; i <applications.length ; i++){
         const app = applications[i];
 
-        const deleteBtn = document.createElement("deleteBtn");
-        deleteBtn.textContent= "Delete";
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent= "   Delete  ";
         deleteBtn.addEventListener("click", function(){
-        deleteApplication(app.id);
+        deleteApplications(app.id);
+        
 
         });
 
@@ -48,21 +52,14 @@ form.addEventListener("submit" , function(e){
 
     }
 
+    }
+    
     function deleteApplications(id){
         applications = applications.filter(app => app.id !== id);
         renderApplications();
         
         
-    }
-   
-   
-        
-
-        
-       
-   
-
-    }
+    };
     
 
 
