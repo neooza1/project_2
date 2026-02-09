@@ -38,29 +38,31 @@ form.addEventListener("submit" , function(e){
         const list = document.getElementById("applicationList");
         list.innerHTML="";
 
-    for( let i = 0; i <applications.length ; i++){
+    for( let i = 0; i < applications.length ; i++){
         const app = applications[i];
 
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent= "   Delete  ";
         deleteBtn.addEventListener("click", function(){
         deleteApplications(app.id);
+        });
+
         
         const acceptBtn = document.createElement("button");
-        acceptBtn.textContent(" Accept");
+        acceptBtn.textContent=" Accept";
         acceptBtn.addEventListener("click" , function(){
         updateStatus(app.id, "accepted");
 
         });
 
         const rejectBtn = document.createElement("button");
-        rejectBtn.textContent("Rejeect");
-        rejectBtn.addEventListener("submit", function(){
-            updateStatus(app.id, "Accepted");
+        rejectBtn.textContent="Reject";
+        rejectBtn.addEventListener("click", function(){
+            updateStatus(app.id, "rejected ");
 
         });
 
-        });
+       
 
         const li = document.createElement("li");
         li.textContent = app.studentName  + "  " + app.studentNumber + "  " + app.course  + "  " + app.status;
@@ -89,6 +91,8 @@ form.addEventListener("submit" , function(e){
             }
             
         }
+
+        renderApplications();
 
     };
     
