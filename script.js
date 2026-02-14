@@ -1,7 +1,15 @@
 let applications =[];
 let selectedId = null;
+let currentFilter = "all";
 
 const form = document.getElementById("applicationForm");
+
+const filterSelect = document.getElementById("statusFilter");
+
+filterSelect.addEventListener("change", function() {
+    currentFilter= filterSelect.value;
+    renderApplications();
+})
 
 form.addEventListener("submit" , function(e){
     
@@ -27,21 +35,27 @@ form.addEventListener("submit" , function(e){
         return;
     }
 
-    if (isNaN ( applications.studentNumber)){
+    if (isNaN (application.studentNumber)){
         alert("Student number must contain numbers only.");
         return;
     }
 
-    if(application.studentNumber.length < 9 ){
+    if(application.studentNumber.length !== 9 ){
         alert("Student number must be 9 digits long.");
+        return;
     }
 
     
      
-    const exists = applications.some(app => app.studentNumber === application.studentNumber) && app.id !== selectedId;
+    const exists = applications.some(app => app.studentNumber === application.studentNumber && app.id !== selectedId);
     if (exists) {
         alert("Student number already exists.");
         return;
+    }
+
+    if(selectedId !== null){
+        const oldApp = applications.find(app => app.id === selectedId);
+        application.status = oldApp.status;
     }
 
     if( selectedId === null) {
@@ -62,6 +76,18 @@ form.addEventListener("submit" , function(e){
         
         const list = document.getElementById("applicationList");
         list.innerHTML="";
+          
+        let filteredApps = applications;
+
+    if (currentFilter !== "all"){
+        filteredApps = applications.filter(app => app.status == currentFilter);
+
+    }
+        for (let i = 0; i < filteredApps.length; i++) {
+            const app = filteredApps[i];
+            
+        }
+  
 
     for( let i = 0; i < applications.length ; i++){
         const app = applications[i];
@@ -170,3 +196,4 @@ form.addEventListener("submit" , function(e){
     
 
 
+    
