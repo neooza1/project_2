@@ -1,4 +1,5 @@
 let applications =[];
+let selectedId = null;
 
 const form = document.getElementById("applicationForm");
 
@@ -33,10 +34,16 @@ form.addEventListener("submit" , function(e){
         alert("Student number already exists.");
         return;
     }
+
+    if( selectedId === null) {
+        applications.push(application);
+    }else {
+        updateApplication(selectedId, application);
+        selectedId = null;
+    }
     
-    applications.push(application);
+    
     renderApplications();
-    console.log(applications);
      form.reset();
 
 });
@@ -82,6 +89,12 @@ form.addEventListener("submit" , function(e){
 
         });
 
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.addEventListener("click", function(){
+        startEdit(app.id);
+        });
+
         if(app.status !== "pending"){
             acceptBtn.disabled = true;
             rejectBtn.disabled = true;
@@ -90,7 +103,7 @@ form.addEventListener("submit" , function(e){
         li.appendChild(deleteBtn);
         li.appendChild(acceptBtn);
         li.appendChild(rejectBtn);
-
+        li.appendChild(editBtn);
         list.appendChild(li);
 
     }
@@ -104,6 +117,18 @@ form.addEventListener("submit" , function(e){
         
     };
 
+    function startEdit(id){
+        selectedId =id;
+
+        const app = applications.find(app => app.id === id);
+
+        document.getElementById("studentName").value = app.studentName;
+        document.getElementById("studentNumber").value = app.studentNumber;
+        document.getElementById("faculty").value = app.faculty;
+        document.getElementById("course").value = app.course;
+
+    }
+
     function updateStatus(id, newStatus){
         for (let i = 0; i < applications.length; i++) {
             if(applications[i].id == id){
@@ -116,6 +141,18 @@ form.addEventListener("submit" , function(e){
         renderApplications();
 
     };
+
+    function updateApplication(id, updatedData) {
+    for (let i = 0; i < applications.length; i++) {
+        if (applications[i].id === id) {
+            applications[i].studentName = updatedData.studentName;
+            applications[i].studentNumber = updatedData.studentNumber;
+            applications[i].faculty = updatedData.faculty;
+            applications[i].course = updatedData.course;
+            break;
+        }
+    }
+}
     
 
 
