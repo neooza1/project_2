@@ -18,8 +18,17 @@ form.addEventListener("submit" , function(e){
         
 
     };
+
+   // validations
+
+    if( !application.studentName || !application.studentNumber || !application.faculty || !application.course){
+        alert("Please Fill in all the fields.");
+        return;
+    }
+
+    
      
-    const exists = applications.some(app => app.studentNumber == application.studentNumber);
+    const exists = applications.some(app => app.studentNumber === application.studentNumber);
     if (exists) {
         alert("Student number already exists.");
         return;
@@ -41,15 +50,26 @@ form.addEventListener("submit" , function(e){
     for( let i = 0; i < applications.length ; i++){
         const app = applications[i];
 
+        
+        const li = document.createElement("li");
+       
+        li.innerHTML = `
+        <strong> ${app.studentName} </strong> |
+         ${app.studentNumber} |
+          ${app.faculty} |
+          ${app.course} |
+          <em>${app.status}</em> `;
+
+
         const deleteBtn = document.createElement("button");
-        deleteBtn.textContent= "   Delete  ";
+        deleteBtn.textContent= "Delete";
         deleteBtn.addEventListener("click", function(){
         deleteApplications(app.id);
         });
 
         
         const acceptBtn = document.createElement("button");
-        acceptBtn.textContent=" Accept";
+        acceptBtn.textContent="Accept";
         acceptBtn.addEventListener("click" , function(){
         updateStatus(app.id, "accepted");
 
@@ -62,15 +82,16 @@ form.addEventListener("submit" , function(e){
 
         });
 
-       
+        if(app.status !== "pending"){
+            acceptBtn.disabled = true;
+            rejectBtn.disabled = true;
+        }
 
-        const li = document.createElement("li");
-        li.textContent = app.studentName  + "  " + app.studentNumber + "  " + app.course  + "  " + app.status;
-        list.appendChild(li);
         li.appendChild(deleteBtn);
         li.appendChild(acceptBtn);
         li.appendChild(rejectBtn);
 
+        list.appendChild(li);
 
     }
 
