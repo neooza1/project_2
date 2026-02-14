@@ -27,6 +27,15 @@ form.addEventListener("submit" , function(e){
         return;
     }
 
+    if (isNaN ( applications.studentNumber)){
+        alert("Student number must contain numbers only.");
+        return;
+    }
+
+    if(application.studentNumber.length < 9 ){
+        alert("Student number must be 9 digits long.");
+    }
+
     
      
     const exists = applications.some(app => app.studentNumber === application.studentNumber) && app.id !== selectedId;
