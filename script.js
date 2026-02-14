@@ -29,7 +29,7 @@ form.addEventListener("submit" , function(e){
 
     
      
-    const exists = applications.some(app => app.studentNumber === application.studentNumber);
+    const exists = applications.some(app => app.studentNumber === application.studentNumber) && app.id !== selectedId;
     if (exists) {
         alert("Student number already exists.");
         return;
@@ -85,7 +85,7 @@ form.addEventListener("submit" , function(e){
         const rejectBtn = document.createElement("button");
         rejectBtn.textContent="Reject";
         rejectBtn.addEventListener("click", function(){
-            updateStatus(app.id, "rejected ");
+            updateStatus(app.id, "rejected");
 
         });
 
@@ -113,6 +113,11 @@ form.addEventListener("submit" , function(e){
     function deleteApplications(id){
         applications = applications.filter(app => app.id !== id);
         renderApplications();
+
+        if ( selectedId === id){
+            selectedId = null;
+            form.reset();
+        }
         
         
     };
