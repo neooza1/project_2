@@ -4,31 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheets" href="CSS/styles.css">
     <title>Application Tracker</title>
 </head>
 <body>  
 
-       <h2>Application Tracker</h2>
+     <div class="container">
 
-      <form id="applicationForm">
+       <h2>Student Application Tracker</h2>
 
+
+       <div class="card">
+        <h3>Add New Application</h3>
+
+      <form id="applicationForm" class="form-grid">
+
+      <div class="field">
+        <label for="studentName">Name:</label>
         <input type="text" id="studentName" placeholder="Student Name" required>
-        <input type="text" id="studentNumber" placeholder="Student Number" required inputmode="numeric">
+        
+      </div>
+
+      <div class="field">
+        <label for="studentNumber">Student Number:</label>
+          <input type="text" id="studentNumber" placeholder="Student Number" required inputmode="numeric">
+        
+        
+      </div>
+
+      <div class="field">
+        <label for="faculty">Faculty:</label>
         <input type="text" id="faculty" placeholder="Faculty" required>
-        <input type="text" id="course" placeholder="Course" required>
-        <button type="submit" id="addApplication">Add Application</button>
+    
+        
+      </div>
+
+      <div class="field">
+        <label for="course">Course:</label>
+         <input type="text" id="course" placeholder="Course" required>
+      </div>
+          
+        <button type="submit" id="addApplication" class="main-btn">Add Application</button>
 
       </form>
+      </div>
 
+
+       <div class="filter-bar">
+        <label for="statusFilter">Filter by Status:</label>
       <select id="statusFilter">
        <option value="all">All</option>
        <option value="pending">Pending</option>
        <option value="accepted">Accepted</option>
        <option value="rejected">Rejected</option>
       </select>
+      </div>
 
-      <ul id="applicationList"></ul>
+      <div class="card">
+        <h3>Application List</h3>
+          
+        <table>
+          <thead>
+         <tr>
+             <th>Name</th>
+             <th>Student Number</th>
+             <th>Faculty</th>
+             <th>Course</th>
+             <th>Status</th>
+             <th>Actions</th>
+
+         </tr>
+         </thead>
+          
+        </table>
+
+        <tbody id="applicationTableBody"></tbody>
+      </div>
   
+      </div>
     
     <script src="script.js"></script>
 
