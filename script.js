@@ -98,7 +98,7 @@ form.addEventListener("submit" , function(e){
         const row = document.createElement("tr");
        
         row.innerHTML = `
-        <td> ${app.studentName} </td> |
+        <td> ${app.studentName} </td> 
          <td>${app.studentNumber}</td>
          <td> ${app.faculty}</td>
          <td> ${app.course} </td>
