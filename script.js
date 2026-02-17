@@ -76,7 +76,8 @@ form.addEventListener("submit" , function(e){
         
         const tableBody = document.getElementById("applicationTableBody");
         tableBody.innerHTML="";
-          
+           
+        //Filter applications?
         let filteredApps = applications;
 
     if (currentFilter !== "all"){
@@ -88,12 +89,13 @@ form.addEventListener("submit" , function(e){
             
         }
   
+        //render rows
 
     for( let i = 0; i < applications.length ; i++){
         const app = applications[i];
 
         
-        const row = document.createElement("li");
+        const row = document.createElement("tr");
        
         row.innerHTML = `
         <td> ${app.studentName} </td> |
@@ -101,38 +103,44 @@ form.addEventListener("submit" , function(e){
          <td> ${app.faculty}</td>
          <td> ${app.course} </td>
           <td>${app.status}</td>
-          <td></td>
+          <td class="actions"></td>
           `;
         
-          const actionsCell = row.querySelector("td:last-child");
+          const actionsCell = row.querySelector(".actions");
+
+          //delete
 
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent= "Delete";
         deleteBtn.addEventListener("click", function(){
         deleteApplications(app.id);
         });
-
-        
+ 
+         //Accept       
         const acceptBtn = document.createElement("button");
         acceptBtn.textContent="Accept";
         acceptBtn.addEventListener("click" , function(){
         updateStatus(app.id, "accepted");
 
         });
-
+           
+        //Reject
         const rejectBtn = document.createElement("button");
         rejectBtn.textContent="Reject";
         rejectBtn.addEventListener("click", function(){
             updateStatus(app.id, "rejected");
 
         });
+        
 
+        //Edit
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
         editBtn.addEventListener("click", function(){
         startEdit(app.id);
         });
-
+    
+        //DIsable accept & reject if not pending
         if(app.status !== "pending"){
             acceptBtn.disabled = true;
             rejectBtn.disabled = true;
@@ -142,13 +150,16 @@ form.addEventListener("submit" , function(e){
         actionsCell.appendChild(acceptBtn);
         actionsCell.appendChild(rejectBtn);
         actionsCell.appendChild(editBtn);
+
+        tableBody.appendChild(row);
+
         
-        actionsCell.appendChild(row);
 
     }
 
     }
     
+    //delete Function
     function deleteApplications(id){
         applications = applications.filter(app => app.id !== id);
         renderApplications();
@@ -160,6 +171,8 @@ form.addEventListener("submit" , function(e){
         
         
     };
+
+    //edit function
 
     function startEdit(id){
         selectedId =id;
@@ -173,6 +186,7 @@ form.addEventListener("submit" , function(e){
 
     }
 
+        //update status function
     function updateStatus(id, newStatus){
         for (let i = 0; i < applications.length; i++) {
             if(applications[i].id == id){
@@ -185,7 +199,7 @@ form.addEventListener("submit" , function(e){
         renderApplications();
 
     };
-
+      //update appliaction function
     function updateApplication(id, updatedData) {
     for (let i = 0; i < applications.length; i++) {
         if (applications[i].id === id) {
