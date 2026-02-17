@@ -74,8 +74,8 @@ form.addEventListener("submit" , function(e){
   
     function renderApplications(){
         
-        const list = document.getElementById("applicationList");
-        list.innerHTML="";
+        const tableBody = document.getElementById("applicationTableBody");
+        tableBody.innerHTML="";
           
         let filteredApps = applications;
 
@@ -93,15 +93,18 @@ form.addEventListener("submit" , function(e){
         const app = applications[i];
 
         
-        const li = document.createElement("li");
+        const row = document.createElement("li");
        
-        li.innerHTML = `
-        <strong> ${app.studentName} </strong> |
-         ${app.studentNumber} |
-          ${app.faculty} |
-          ${app.course} |
-          <em>${app.status}</em> `;
-
+        row.innerHTML = `
+        <td> ${app.studentName} </td> |
+         <td>${app.studentNumber}</td>
+         <td> ${app.faculty}</td>
+         <td> ${app.course} </td>
+          <td>${app.status}</td>
+          <td></td>
+          `;
+        
+          const actionsCell = row.querySelector("td:last-child");
 
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent= "Delete";
@@ -135,11 +138,12 @@ form.addEventListener("submit" , function(e){
             rejectBtn.disabled = true;
         }
 
-        li.appendChild(deleteBtn);
-        li.appendChild(acceptBtn);
-        li.appendChild(rejectBtn);
-        li.appendChild(editBtn);
-        list.appendChild(li);
+        actionsCell.appendChild(deleteBtn);
+        actionsCell.appendChild(acceptBtn);
+        actionsCell.appendChild(rejectBtn);
+        actionsCell.appendChild(editBtn);
+        
+        actionsCell.appendChild(row);
 
     }
 
