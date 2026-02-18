@@ -87,12 +87,9 @@ form.addEventListener("submit" , function(e){
         for (let i = 0; i < filteredApps.length; i++) {
             const app = filteredApps[i];
             
-        }
+      
   
         //render rows
-
-    for( let i = 0; i < applications.length ; i++){
-        const app = applications[i];
 
         
         const row = document.createElement("tr");
@@ -102,20 +99,15 @@ form.addEventListener("submit" , function(e){
          <td>${app.studentNumber}</td>
          <td> ${app.faculty}</td>
          <td> ${app.course} </td>
-          <td>${app.status}</td>
+          <td>
+          <span class="status${app.status}">
+          ${app.status}
+          </td>
           <td class="actions"></td>
           `;
         
           const actionsCell = row.querySelector(".actions");
 
-          //delete
-
-        const deleteBtn = document.createElement("button");
-        deleteBtn.textContent= "Delete";
-        deleteBtn.addEventListener("click", function(){
-        deleteApplications(app.id);
-        });
- 
          //Accept       
         const acceptBtn = document.createElement("button");
         acceptBtn.textContent="Accept";
@@ -139,6 +131,16 @@ form.addEventListener("submit" , function(e){
         editBtn.addEventListener("click", function(){
         startEdit(app.id);
         });
+
+        
+          //delete
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent= "Delete";
+        deleteBtn.addEventListener("click", function(){
+        deleteApplications(app.id);
+        });
+ 
     
         //DIsable accept & reject if not pending
         if(app.status !== "pending"){
