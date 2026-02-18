@@ -100,8 +100,8 @@ form.addEventListener("submit" , function(e){
          <td> ${app.faculty}</td>
          <td> ${app.course} </td>
           <td>
-          <span class="status${app.status}">
-          ${app.status}
+          <span class="status ${app.status}">
+          ${app.status}</span>
           </td>
           <td class="actions"></td>
           `;

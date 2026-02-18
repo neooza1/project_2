@@ -171,22 +171,22 @@ td:nth-child(5):contains("rejected") {
   transition: 0.2s;
 }
 
-.actions button:nth-child(1) {
+.actions button:nth-child(4) {
   background: #dc2626;
   color: white;
 }
 
-.actions button:nth-child(2) {
+.actions button:nth-child(1) {
   background: #16a34a;
   color: white;
 }
 
-.actions button:nth-child(3) {
+.actions button:nth-child(2) {
   background: #f59e0b;
   color: white;
 }
 
-.actions button:nth-child(4) {
+.actions button:nth-child(3) {
   background: #2563eb;
   color: white;
 }
