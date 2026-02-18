@@ -223,3 +223,72 @@ td:nth-child(5):contains("rejected") {
   background: #fee2e2;
   color: #991b1b;
 }
+
+/* RESPONSIVE DESIGN */
+/* Tablet */
+@media (max-width: 900px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main-btn {
+    grid-column: span 2;
+  }
+
+  th, td {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .actions button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 22px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-btn {
+    grid-column: span 1;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Make table scrollable */
+  .card table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .actions button {
+    margin-bottom: 6px;
+    display: inline-block;
+  }
+}
