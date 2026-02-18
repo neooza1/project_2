@@ -148,10 +148,11 @@ form.addEventListener("submit" , function(e){
             rejectBtn.disabled = true;
         }
 
-        actionsCell.appendChild(deleteBtn);
+        
         actionsCell.appendChild(acceptBtn);
         actionsCell.appendChild(rejectBtn);
         actionsCell.appendChild(editBtn);
+        actionsCell.appendChild(deleteBtn);
 
         tableBody.appendChild(row);
 

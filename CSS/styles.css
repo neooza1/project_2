@@ -42,3 +42,184 @@ h2 {
   font-weight: 700;
   color: #111827;
 }
+
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  align-items: end;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.field input:focus {
+  border-color: #2563eb;
+}
+
+/*   Main Button */
+.main-btn {
+  grid-column: span 4;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.main-btn:hover {
+  background: #1d4ed8;
+}
+
+/*  Filter Bar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-bar label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+}
+
+.filter-bar select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+/*   Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+thead {
+  background: #f9fafb;
+}
+
+th, td {
+  text-align: left;
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+th {
+  font-weight: 700;
+  color: #374151;
+}
+
+tbody tr:hover {
+  background: #f3f4f6;
+}
+
+/* Status Styling */
+td:nth-child(5) {
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+td:nth-child(5):contains("pending") {
+  color: #ca8a04;
+}
+
+td:nth-child(5):contains("accepted") {
+  color: #16a34a;
+}
+
+td:nth-child(5):contains("rejected") {
+  color: #dc2626;
+}
+
+/*  Action Buttons */
+.actions button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: 0.2s;
+}
+
+.actions button:nth-child(1) {
+  background: #dc2626;
+  color: white;
+}
+
+.actions button:nth-child(2) {
+  background: #16a34a;
+  color: white;
+}
+
+.actions button:nth-child(3) {
+  background: #f59e0b;
+  color: white;
+}
+
+.actions button:nth-child(4) {
+  background: #2563eb;
+  color: white;
+}
+
+.actions button:hover {
+  opacity: 0.85;
+}
+
+.actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.accepted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
